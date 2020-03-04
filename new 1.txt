@@ -1,0 +1,44 @@
+@AutoTesting
+Feature: Login and Logout
+  
+  
+Scenario: Opening Contact List of a random company after Logging in with valid credentials
+  
+  Given I open "http://www.way2automation.com/" website
+  #About us
+  about us
+  When I click "About us"
+  Then I should be on ""
+  Given I navigate to "http://demo.stagingitb.com:29543/#/access/login" page
+  And I input "username" as "super.user@itboost.com"
+  And I input "password" as "123456"
+  When I click "loginBtn"
+  Then I should be redirected to "Global Dashboard"
+  When I click a random favorite company
+  Then I should be redirected to "Company Dashboard"
+  When I click "Contacts" menu item
+  Then I should be redirected to "Contact List"
+  When I log out
+  Then I should be redirected to "SignIn"
+ 
+
+
+
+Scenario: Logging in with invalid credentials
+  Given I navigate to "http://demo.stagingitb.com:29543/#/access/login" page
+  And I input "username" as "super.man@itboost.com"
+  And I input "password" as "654321"
+  When I click "loginBtn"
+  Then I should be redirected to "Global Dashboard"
+  When I log out
+  Then I should be redirected to "SignIn"
+
+
+
+
+
+
+
+
+
+      
